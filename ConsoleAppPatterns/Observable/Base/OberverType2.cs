@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppPatterns.Observable.Base
 {
-    internal class OberverType1 : IObserver
+    internal class OberverType2 : IObserver
     {
         string nameOfObserver;
 
-        public OberverType1(string name)
+        public OberverType2(string name)
         {
             this.nameOfObserver = name;
         }
