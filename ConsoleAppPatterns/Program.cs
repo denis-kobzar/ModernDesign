@@ -1,4 +1,6 @@
 ﻿using ConsoleAppPatterns.Observable.Base;
+using ConsoleAppPatterns.Observable.TelegramChannel;
+using ConsoleAppPatterns.Observable.TelegramChannel.Service;
 
 namespace ConsoleAppPatterns
 {
@@ -6,26 +8,18 @@ namespace ConsoleAppPatterns
     {
         static void Main(string[] args)
         {
-            Subject subject = new Subject();
+            var users = TelegramUserService.CreateUsers(new List<string>
+            {
+                "Kavun",
+                "Moon",
+                "KhersonLight"
+            });
 
-            OberverType1 o11 = new OberverType1("type 1:1");
-            OberverType1 o12 = new OberverType1("type 1:2");
-            OberverType1 o13 = new OberverType1("type 1:3");
+            var channel = new TelegramChannel();
+            TelegramUserService.Subscribe(channel, users);
 
-            OberverType2 o21 = new OberverType2("type 2:1");
-            OberverType2 o22 = new OberverType2("type 2:2");
-            OberverType2 o23 = new OberverType2("type 2:3");
-
-            subject.Register(o11);
-            subject.Register(o12);
-            subject.Register(o13);
-            subject.Register(o21);
-            subject.Register(o22);
-            subject.Register(o23);
-
-            subject.Notify(1);
-            subject.Notify(2);
-            subject.Notify(3);
+            channel.Publish("Post 1");
+            channel.Publish("Post 2");
         }
     }
 }
