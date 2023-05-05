@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ModernDesign.Core
 {
-    internal class Obsevable : INotifyPropertyChanged
+    internal class Observable : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
